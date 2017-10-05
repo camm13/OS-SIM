@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class OS {
-	private String processid;
-	private String arrivaltime;
+	private String processid; //int
+	private String arrivaltime; //int arrival order
 	private String priority;
 	private String code;
 
@@ -14,15 +14,11 @@ public class OS {
 	// public IOdevice io;
 	// public boolean isCPUAvailable;
 	// public ProcessTable process_Table;
-	ArrayList<ProcessImage> New_Q = new ArrayList<ProcessImage>();
-	ArrayList<Task> R_Q = new ArrayList<Task>();
-	ArrayList<Process> W_Q = new ArrayList<Process>();
-	ArrayList<Process> T_Q = new ArrayList<Process>();
+	ArrayList<PCB> New_Q = new ArrayList<PCB>();
+	ArrayList<PCB> R_Q = new ArrayList<PCB>();
+	ArrayList<PCB> W_Q = new ArrayList<PCB>();
+	ArrayList<PCB> T_Q = new ArrayList<PCB>();
 	
-	// public ArrayList<Process> New_Queue;
-	// public ArrayList<Process> Ready_Queue;
-	// public ArrayList<Process> Wait_Queue;
-	// public ArrayList<Process> Terminated_Queue;
 	public void Read() throws IOException {
 		BufferedReader in = null;
 		String[] splited = null;
@@ -41,8 +37,9 @@ public class OS {
 				setArrivalTime(test2);
 				String test3 = splited[2];
 				setPriority(test3);
+				//PCB makes processimage obj for code
 				
-				ProcessImage M = new ProcessImage(test1, test2, test3);
+				ProcessImage M = new ProcessImage(test1, test2, test3); //change to PCB
 				
 				New_Q.add(M);
 
@@ -59,41 +56,6 @@ public class OS {
 			e.printStackTrace();
 		}
 
-	}
-
-	public void setProcessID(String processid) {
-		this.processid = processid;
-
-	}
-
-	public String getProcessID() {
-		return processid;
-	}
-
-	public void setArrivalTime(String arrivaltime) {
-		this.arrivaltime = arrivaltime;
-
-	}
-
-	public String getArrivalTime() {
-		return arrivaltime;
-	}
-
-	public void setPriority(String priority) {
-		this.priority = priority;
-
-	}
-
-	public String getPriority() {
-		return priority;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }
