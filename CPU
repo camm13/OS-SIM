@@ -1,0 +1,25 @@
+
+public class CPU extends Thread {
+	OS ss = new OS();
+	
+	
+
+  Thread thread = new Thread();
+	  
+	  public void run(){
+		
+			
+	      System.out.println("Thread Running");
+	    }
+	  
+	  public static void main(String args[]) {
+	        (new CPU()).start();
+	    }
+	  
+	  
+	public class Pair< PC, state> execute(Process P){ 
+		
+		
+		
+	}
+}
