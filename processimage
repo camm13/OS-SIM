@@ -1,0 +1,16 @@
+
+public class ProcessImage {
+public PCB pcb_data;
+OS ss = new OS();
+public String code = ss.getCode();
+public ProcessImage(String process,String arrival, String code) {
+	
+	 //set PCB data, code and others
+	
+	
+	}
+
+
+
+
+}
