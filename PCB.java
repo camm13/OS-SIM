@@ -5,7 +5,7 @@ public class PCB {
     public int pid;
     public int AO;
     public int Priority;
-    public String state = "";
+    public String state;
     public static int nextpid = 0;
 
     public PCB(int pid, int AO, int Priority, double BS )
@@ -19,7 +19,9 @@ public class PCB {
 
     public String showPCB()
     {
-        return "P_ID: " + this.getPid() + "\nState: " + this.getState() + "\nArrival Order: " + this.getAO() + "\nPriority: " + this.getPriority() +"\n";
+        return "P_ID: " + this.getPid() + "\nState: " + this.getState() + 
+            "\nArrival Order: " + this.getAO() + 
+            "\nPriority: " + this.getPriority() +"\n";
 
     }
 
