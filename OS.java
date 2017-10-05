@@ -14,8 +14,8 @@ public class OS {
 	// public IOdevice io;
 	// public boolean isCPUAvailable;
 	// public ProcessTable process_Table;
-	ArrayList<Process> New_Q = new ArrayList<Process>();
-	ArrayList<Process> R_Q = new ArrayList<Process>();
+	ArrayList<ProcessImage> New_Q = new ArrayList<ProcessImage>();
+	ArrayList<Task> R_Q = new ArrayList<Task>();
 	ArrayList<Process> W_Q = new ArrayList<Process>();
 	ArrayList<Process> T_Q = new ArrayList<Process>();
 	
@@ -41,6 +41,10 @@ public class OS {
 				setArrivalTime(test2);
 				String test3 = splited[2];
 				setPriority(test3);
+				
+				ProcessImage M = new ProcessImage(test1, test2, test3);
+				
+				New_Q.add(M);
 
 				String test4 = splited[3];
 				setCode(test4);
