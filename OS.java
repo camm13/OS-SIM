@@ -3,22 +3,26 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+//Add changed variables to fit pcb object
 
 public class OS {
-	private String processid; //int
-	private String arrivaltime; //int arrival order
-	private String priority;
+	
+	private int processId;
+	private Long arrivalTime;
+	public int arrivalOrder;
+	private int priority;
 	private String code;
 
 	// public CPU cpu;
 	// public IOdevice io;
 	// public boolean isCPUAvailable;
 	// public ProcessTable process_Table;
-	ArrayList<PCB> New_Q = new ArrayList<PCB>();
-	ArrayList<PCB> R_Q = new ArrayList<PCB>();
-	ArrayList<PCB> W_Q = new ArrayList<PCB>();
-	ArrayList<PCB> T_Q = new ArrayList<PCB>();
+	ArrayList<Process> New_Q = new ArrayList<Process>();
+	ArrayList<Process> R_Q = new ArrayList<Process>(); //ready queue
+	ArrayList<Process> W_Q = new ArrayList<Process>(); //waiting queue
+	ArrayList<Process> T_Q = new ArrayList<Process>(); //terminated queue
 	
+	PCB test = null;
 	public void Read() throws IOException {
 		BufferedReader in = null;
 		String[] splited = null;
@@ -32,23 +36,19 @@ public class OS {
 				splited = read.split("\\s+"); //1 -> 4 = each process
 				
 				String test1 = splited[0];
-				setProcessID(test1);
+				processId = Integer.parseInt(test1);
+	
 				String test2 = splited[1];
-				setArrivalTime(test2);
+				arrivalOrder = Integer.parseInt(test2);
+				
 				String test3 = splited[2];
-				setPriority(test3);
-				//PCB makes processimage obj for code
-				
-				ProcessImage M = new ProcessImage(test1, test2, test3); //change to PCB
-				
-				New_Q.add(M);
+				priority = Integer.parseInt(test3);
 
 				String test4 = splited[3];
-				setCode(test4);
-				long arrivalTime = System.currentTimeMillis();
-				System.out.println(test1 + " " + test2 + " " + test3 + " " + test4);
-				break;
-
+				code = test4;
+				arrivalTime = System.currentTimeMillis();
+				PCB test = new PCB(processId, arrivalOrder, arrivalTime, priority, "");
+				
 			}
 
 		} catch (FileNotFoundException e) {
