@@ -1,15 +1,12 @@
-/**
- * Created by Cam1221 on 10/2/2017.
- */
 public class PCB {
-    public int pid; //process ID
-    public int AO; //arrivalOrder
-    public long AT = System.currentTimeMillis(); //arrival time
-    public int Priority; 
-    public String state = ""; 
-    public static int nextpid = 0; //location of next process to execute
+    public int pid;
+    public int AO;
+    public long AT = System.currentTimeMillis();
+    public int Priority;
+    public String state = "";
+    public static int nextpid = 0;
 
-    public PCB(int pid, int AO, int AT, int Priority, String state)
+    public PCB(int pid, int AO, int Priority, long AT, String state)
     {
         this.state = state;
         this.pid = ++PCB.nextpid;
@@ -21,8 +18,7 @@ public class PCB {
 
     public String showPCB()
     {
-        return "P_ID: " + this.getPid() + "\nState: " + this.getState() + "\nArrival Time: " + 
-            this.getAT() + "\nArrival Order: " + this.getAO() + "\nPriority: " + this.getPriority() +"\n";
+        return "P_ID: " + this.getPid() + "\nState: " + this.getState() + "\nArrival Time: " + this.getAT() + "\nArrival Order: " + this.getAO() + "\nPriority: " + this.getPriority() +"\n";
 
     }
 
