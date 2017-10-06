@@ -47,7 +47,7 @@ public class OS {
 				String test4 = splited[3];
 				code = test4;
 				arrivalTime = System.currentTimeMillis();
-				PCB test = new PCB(processId, arrivalOrder, arrivalTime, priority, "");
+				PCB test = new PCB(processId, arrivalOrder, priority, arrivalTime, "");
 				
 			}
 
