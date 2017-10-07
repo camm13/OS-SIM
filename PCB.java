@@ -1,14 +1,14 @@
 public class PCB {
     public int pid, AO, Priority;
-    public long AT = System.currentTimeMillis();
+    public long AT;
     public String state = "";
     public static int nextpid = 0;
 
-    public PCB(int pid, int AO, int Priority, long AT, String state)
+    public PCB(int pid, int AO, int Priority,String state)
     {
         this.state = state;
         this.pid = ++PCB.nextpid;
-        this.AT = AT;
+        this.AT = System.currentTimeMillis();
         this.AO = AO;
         this.Priority = Priority;
 
