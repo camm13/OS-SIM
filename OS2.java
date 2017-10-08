@@ -12,7 +12,7 @@ public class OS {
     public CPU cpu;
     public IOdevice io;
     public boolean isCPUAvailable;
-    ArrayList<ProcessImage> N_Q = new ArrayList<ProcessImage>();
+    ArrayList<ProcessImage> N_Q = new ArrayList<ProcessImage>(); // these should be PCB(she said they were pcb in class)
     ArrayList<ProcessImage> R_Q = new ArrayList<ProcessImage>();
     ArrayList<ProcessImage> W_Q = new ArrayList<ProcessImage>();
     ArrayList<ProcessImage> T_Q = new ArrayList<ProcessImage>();
@@ -47,6 +47,8 @@ public class OS {
         try {
             int a = scan.nextInt();
             if (a == 1) {
+                
+                
                 //add FCFS algorithm
             } else if (a == 2) {
                 //add RR algorithm
