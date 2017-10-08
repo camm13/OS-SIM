@@ -1,12 +1,15 @@
 public class PCB {
     public int pid, AO, Priority;
     public long AT;
-    public String state = "";
+    public State state;
     public static int nextpid = 0;
-
-    public PCB(int pid, int AO, int Priority,String state)
+    
+    public enum State{
+	New, Ready, Run, Wait, Terminate
+    }
+    public PCB(int pid, int AO, int Priority)
     {
-        this.state = state;
+        state = State.New;
         this.pid = ++PCB.nextpid;
         this.AT = System.currentTimeMillis();
         this.AO = AO;
@@ -52,14 +55,16 @@ public class PCB {
 		AT = aT;
 	}
 
-	public String getState() {
+	public State getState()
+	{
 		return state;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setState(PCB.State state) 
+	{
+        this.state = state;
 	}
-
+	
 	public static int getNextpid() {
 		return nextpid;
 	}
