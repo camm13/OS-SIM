@@ -1,3 +1,4 @@
+package singleProcessor;
 public class ProcessImage {
 	private PCB pcb_data;
 	private int[] code;
