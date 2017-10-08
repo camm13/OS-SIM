@@ -1,20 +1,33 @@
 public class ProcessImage {
-    public PCB Pcb_data;
-    public int[] code;
-    //to do: other variables help you computing the latency, response
+	private PCB pcb_data;
+	private int[] code;
+	private int id,ao,priority;
+	public ProcessImage(String process) {
+		
+		String[] data = process.split("\\s+"); //"\\s+" is what jared had so i think it checks by spaces.
+		long at = System.currentTimeMillis(); 
+		id = Integer.parseInt(data[0]);
+		ao = Integer.parseInt(data[1]);
+		priority = Integer.parseInt(data[2]);
+		
+		//Cpu/io burst sequence
+		char[] bs = data[3].toCharArray();
+		code = new int[bs.length];
+		for(int i = 0; i< code.length; i++) {
+			code[i] = Character.getNumericValue(bs[i]);
+		}
+		this.pcb_data = new PCB(id,ao,priority);
+        
+        //I thought i saw you added state in PCB so thats why  i did not add here.
+		
+		
+			
+	}
+	public PCB getPcb_data() {
+		return pcb_data;
+	}
+	public int getPriority() {
+		return priority;
+	}
 
-    public ProcessImage(String process) {
-
-        String[] x = process.split(",");        //splits process string for use
-        long AT = System.currentTimeMillis();   //*
-        int pid = Integer.parseInt(x[0]);       //*
-        int AO = Integer.parseInt(x[1]);        // get process information
-        int Priority = Integer.parseInt(x[2]);  //*
-        int BS = Integer.parseInt(x[3]);        //*
-        code = new int[BS];                     //get burst sequence
-
-        this.Pcb_data = new PCB(pid, AO, Priority, AT, PCB.State.New);
-        //set PCB data, code and others
-        //set state as "NEW";
-    }
 }
