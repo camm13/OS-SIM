@@ -6,7 +6,13 @@ import java.util.ArrayList;
 //Add changed variables to fit pcb object
 
 public class OS {
-	
+		public ProcessImage getNewQ(int i)
+	{
+		ProcessImage m = New_Q.get(i);
+	//	int j = m.getBurstTime();
+		return m;
+		
+	}
 	private int processId;
 	private Long arrivalTime;
 	public int arrivalOrder;
