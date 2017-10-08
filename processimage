@@ -1,12 +1,11 @@
 public class ProcessImage {
     public PCB Pcb_data;
     public int[] code;
-//to do: other variables help you computing the latency, response
+    //to do: other variables help you computing the latency, response
 
     public ProcessImage(String process) {
 
-        String[] x = process.split(" ");        //splits process string for use
-        String State = "New";                   // set current state as new
+        String[] x = process.split(",");        //splits process string for use
         long AT = System.currentTimeMillis();   //*
         int pid = Integer.parseInt(x[0]);       //*
         int AO = Integer.parseInt(x[1]);        // get process information
@@ -14,15 +13,8 @@ public class ProcessImage {
         int BS = Integer.parseInt(x[3]);        //*
         code = new int[BS];                     //get burst sequence
 
-        this.Pcb_data = new PCB(pid, AO, Priority, AT, State);
+        this.Pcb_data = new PCB(pid, AO, Priority, AT, PCB.State.New);
         //set PCB data, code and others
-//set state as "NEW";
+        //set state as "NEW";
     }
 }
-
-/**                             EVERYONE READ
- *
- * This is not a finished project, but more so somewhere for us to start.
- * Feel free to change it as you want.
- *
- */
