@@ -1,4 +1,3 @@
-package singleProcessor;
 
 public class PCB {
     public int pid, AO, Priority;
