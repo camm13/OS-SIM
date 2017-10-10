@@ -4,7 +4,7 @@
 public class CPU extends Thread {
     private boolean BusyOrNot = false;
     public int PC; // Your CPU only has one register PC
-    public int timeslice;
+    public int timeslice = -1;
     private int burstnumber;
 
     public CPU() {
@@ -76,5 +76,12 @@ public class CPU extends Thread {
     	burstnumber = timeslice;
     	return burstnumber;
     }
+    public void setTimeSlice(int ts){
+        this.timeslice = ts
+    }
+    public int getTimeSlice(){
+        return timeslice;
+    }
+    
 }
 
