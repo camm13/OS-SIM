@@ -156,6 +156,96 @@ public class OS {
 				}
 
 			}
+			if (a == 2) { //Round Robin
+				/**
+				 * Added updateburst in both CPU and IO.
+				 *  NEED: CPU and IO classes to run bubble sort "timeslice" amount of times
+				 *  then update the burst. Tried but to tired to acutley figure it out. 
+				 *  will try again tomorrow.
+				 */
+				int timeslice;
+				System.out.println("Enter a timeslice");
+				Scanner sc = new Scanner(System.in);
+				timeslice = sc.nextInt();
+				while (processCount < N_Q.size()) {
+
+					// W_Q = N_Q; // not sure if this is how wait queue is supposed to be used?
+
+					R_Q.add(N_Q.get(processCount)); // Start with Ready Queue Add
+
+					ProcessImage pImage = N_Q.get(processCount); // start with RQ
+					PCB B = pImage.getPcb_data(); // PCB obj for getting states,(not sure how to do this)
+					B.setState(PCB.State.Run);
+					if (!W_Q.isEmpty()) {
+						W_Q.remove(0);
+					}
+					B.setState(PCB.State.Ready);
+					R_Q.add(pImage);
+
+					long processArivalTime = System.currentTimeMillis();
+					long responseTimeStart = System.currentTimeMillis();
+					long responseTimeEnd = 0;
+
+					ArrayList<Integer> codeList = pImage.returnCode();
+
+					for (int i = 0; i < codeList.size();) {
+						int currentBurst = codeList.get(i);
+
+						CPU s = new CPU();
+						IODevice k = new IODevice();
+
+						if (s.cpuIsBusy() == false) {
+
+							s.setBurstNumber(currentBurst);
+							s.run();
+							if (i == 0) {
+								responseTimeEnd = System.currentTimeMillis();
+
+							}
+
+							System.out.println("done with burst: " + currentBurst);
+							i++;
+
+						}
+						if (i >= codeList.size()) {
+							break;
+						}
+
+						currentBurst = codeList.get(i);
+						if (s.cpuIsBusy() == false && k.IOIsBusy() == false) {
+							B.setState(PCB.State.Wait);
+							// W_Q.add(N_Q.get(processCount));
+							if (!R_Q.isEmpty()) {
+								W_Q.add(N_Q.get(processCount));
+
+								R_Q.remove(0);
+
+							}
+
+							k.setBurstNumber(currentBurst);
+							k.run();
+
+							System.out.println("done with burst: " + currentBurst);
+
+							i++;
+
+						}
+
+					}
+
+					// ----PROCESS END----
+					long responseTime = responseTimeEnd - responseTimeStart;
+					long endTime = System.currentTimeMillis();
+					long latency = endTime - processArivalTime;
+					System.out.println("Process " + pImage.getpId() + " Latency:" + latency);
+					System.out.println("Process " + pImage.getpId() + " Response Time:" + responseTime);
+
+					B.setState(PCB.State.Terminate);
+					T_Q.add(pImage);
+					processCount++;
+
+				}
+			}
 
 			if (a == 1) {
 				while (processCount < N_Q.size()) {
