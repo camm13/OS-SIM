@@ -63,5 +63,9 @@ public class IODevice extends Thread {
         return burstnumber;
 
     }
+    public int updateBurst(int timeslice) {
+    	burstnumber = timeslice;
+    	return burstnumber;
+    }
 
 }
