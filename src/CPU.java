@@ -68,7 +68,13 @@ public class CPU extends Thread {
     public int getBurstNumber() {
 
         return burstnumber;
-
+    }
+    public int getBurstNumber() {
+        return burstnumber;
+    }
+    public int updateBurst(int timeslice) {
+    	burstnumber = timeslice;
+    	return burstnumber;
     }
 }
 
