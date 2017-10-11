@@ -1,3 +1,5 @@
+package singleProcessor;
+
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -26,7 +28,7 @@ public class OS {
 
 	public static void read() throws IOException {
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("input.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("test.txt"));
 			String read = null;
 			while ((read = in.readLine()) != null) {
 				ProcessImage p = new ProcessImage(read);
@@ -125,18 +127,13 @@ public class OS {
 							// W_Q.add(N_Q.get(processCount));
 							if (!R_Q.isEmpty()) {
 								W_Q.add(N_Q.get(processCount));
-
 								R_Q.remove(0);
 
 							}
-
 							k.setBurstNumber(currentBurst);
 							k.run();
-
 							System.out.println("done with burst: " + currentBurst);
-
 							i++;
-
 						}
 
 					}

@@ -1,3 +1,5 @@
+package singleProcessor;
+
 
 
 
@@ -66,10 +68,6 @@ public class CPU extends Thread {
         this.burstnumber = burstnumber;
     }
     public int getBurstNumber() {
-
-        return burstnumber;
-    }
-    public int getBurstNumber() {
         return burstnumber;
     }
     public int updateBurst(int timeslice) {
@@ -77,7 +75,7 @@ public class CPU extends Thread {
     	return burstnumber;
     }
     public void setTimeSlice(int ts){
-        this.timeslice = ts
+        this.timeslice = ts;
     }
     public int getTimeSlice(){
         return timeslice;

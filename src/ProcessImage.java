@@ -1,3 +1,5 @@
+package singleProcessor;
+
 import java.util.ArrayList;
 
 public class ProcessImage {

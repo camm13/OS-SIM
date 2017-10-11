@@ -1,3 +1,5 @@
+package singleProcessor;
+
 //Going to be very similar to CPU
 public class IODevice extends Thread {
     private boolean BusyOrNot = false;
